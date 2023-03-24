@@ -9,7 +9,7 @@ from prettytable import PrettyTable
 import swin.opts as opts
 from input import packages
 
-def print_summary():
+def _print_summary():
     '''
     Prints a summary across packages.
     '''
@@ -35,10 +35,14 @@ def print_summary():
     table.align = 'r'
     print(table)
 
-for p in packages:
-    p.plot_downloads_with_trend()
-    if p.ref:
-        p.plot_downloads_share_with_trend()
+def main():
+    '''
+    CLI entry
+    '''
+    for p in packages:
+        p.plot_downloads_with_trend()
+        if p.ref:
+            p.plot_downloads_share_with_trend()
 
-packages.sort(key=lambda package: package.total_downloads, reverse=True)
-print_summary()
+    packages.sort(key=lambda package: package.total_downloads, reverse=True)
+    _print_summary()
