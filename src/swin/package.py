@@ -10,7 +10,7 @@ import matplotlib.ticker as mtick
 from numerize import numerize
 import pandas as pd
 import pypistats
-import swin.opts as opts
+from swin import opts
 
 # Using synodic month which is the most common definition.
 MONTHS = (opts.end_date-opts.start_date).days / 29.53059
@@ -37,7 +37,7 @@ class Package:
         '''
         raise AssertionError('There should be no objects of base Package class')
 
-    def __init__(self, pid, title, *, ref=None):
+    def __init__(self, pid, *, title=None, ref=None):
         '''
         Create a software package descriptor.
         'pid'   is an engineering package name (e.g., its name on a registry).
@@ -45,7 +45,7 @@ class Package:
         'ref'   is the reference comparison package.
         '''
         self.__pid = pid
-        self.__title = title
+        self.__title = title if title else pid
         self.__ref = ref
         self.__downloads = self.compute_downloads()
 
@@ -168,16 +168,16 @@ class PackageSet(Package):
     Descriptor for a set of packages that require combined statistics.
     '''
 
-    def __init__(self, pid, title, packages, *, ref=None):
+    def __init__(self, pid, packages, *, title=None, ref=None):
         '''
         Create a descriptor for a set of packages that require combined statistics.
         'pid'      is an engineering ID for the set of packages.
-        'title'    is a user-friendly description (e.g., for putting on charts).
         'packages' is a list of packages that form the set.
+        'title'    is a user-friendly description (e.g., for putting on charts).
         'ref'      is the reference comparison package.
         '''
         self.packages = packages
-        super().__init__(pid, title, ref=ref)
+        super().__init__(pid, title=title, ref=ref)
 
     @property
     def registry(self):

@@ -4,12 +4,15 @@
 Software Insights main script.
 '''
 
+from argparse import ArgumentParser
 from datetime import timedelta
 from prettytable import PrettyTable
-import swin.opts as opts
-from input import packages
+from swin import opts
+from swin.package import PyPIPackage
 
-def _print_summary():
+VERSION = '0.0.4'
+
+def _print_summary(packages):
     '''
     Prints a summary across packages.
     '''
@@ -39,10 +42,16 @@ def main():
     '''
     CLI entry
     '''
-    for p in packages:
-        p.plot_downloads_with_trend()
-        if p.ref:
-            p.plot_downloads_share_with_trend()
+    parser = ArgumentParser(description='Simple analytics for PyPI packages based on `pypistats`')
+    parser.add_argument('--version', action='version', version='%(prog)s '+VERSION)
+    parser.add_argument('package', nargs='+', help='PyPI package names for processing')
+    packages = [PyPIPackage(p) for p in parser.parse_args().package]
+
+    for package in packages:
+        package.plot_downloads_with_trend()
+# Will add CLI for ref packages later
+#       if package.ref:
+#           package.plot_downloads_share_with_trend()
 
     packages.sort(key=lambda package: package.total_downloads, reverse=True)
-    _print_summary()
+    _print_summary(packages)
