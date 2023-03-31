@@ -10,7 +10,7 @@ from prettytable import PrettyTable
 from swin import opts
 from swin.package import PyPIPackage
 
-VERSION = '0.0.4'
+VERSION = '0.0.5'
 
 def _print_summary(packages):
     '''
@@ -44,14 +44,18 @@ def main():
     '''
     parser = ArgumentParser(description='Simple analytics for PyPI packages based on `pypistats`')
     parser.add_argument('--version', action='version', version='%(prog)s '+VERSION)
+    parser.add_argument('--ref', help='reference comparison package')
     parser.add_argument('package', nargs='+', help='PyPI package names for processing')
-    packages = [PyPIPackage(p) for p in parser.parse_args().package]
+    args = parser.parse_args()
+
+    ref = args.ref
+    if ref: ref = PyPIPackage(ref)
+    packages = [PyPIPackage(p, ref=ref) for p in args.package]
 
     for package in packages:
         package.plot_downloads_with_trend()
-# Will add CLI for ref packages later
-#       if package.ref:
-#           package.plot_downloads_share_with_trend()
+        if ref:
+            package.plot_downloads_share_with_trend()
 
     packages.sort(key=lambda package: package.total_downloads, reverse=True)
     _print_summary(packages)
