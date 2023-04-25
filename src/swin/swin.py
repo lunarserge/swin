@@ -49,7 +49,8 @@ def main():
     args = parser.parse_args()
 
     ref = args.ref
-    if ref: ref = PyPIPackage(ref)
+    if ref:
+        ref = PyPIPackage(ref)
     packages = [PyPIPackage(p, ref=ref) for p in args.package]
 
     for package in packages:
