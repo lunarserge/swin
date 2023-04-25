@@ -14,8 +14,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3.5.0
-      - run: |
-          pip install -r requirements.txt
-          pip install pylint bandit
+  
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Pylint static code analyser
+        run: |
+          pip install pylint
           pylint src/swin
+
+      - name: Run Bandit security analyser
+        run: |
+          pip install bandit
           bandit -r src/swin
