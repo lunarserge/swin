@@ -3,4 +3,5 @@
   numpy>=1.24.2
   pandas>=1.5.3
   prettytable>=3.6.0
+  PyGithub>=2.1.1
   pypistats>=1.2.1
