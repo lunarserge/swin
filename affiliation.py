@@ -31,10 +31,15 @@ def guess_affiliation_from_email(user):
 Map of known translations from company info into affiliation.
 '''
 COMPANY_TO_AFFILIATION = [
-    ('advanced micro devices inc.',        'amd'),
-    ('information sciences institute',     'isi'),
-    ('usc information sciences institute', 'isi'),
-    ('the ohio state university',          'osu')
+    ('advanced micro devices inc.',             'amd'),
+    ('stasosphere online inc. / contextual.ai', 'contextual'),
+    ('harbin institute of technology',          'hit'),
+    ('information sciences institute',          'isi'),
+    ('usc information sciences institute',      'isi'),
+    ('https://github.com/microsoft',            'microsoft'),
+    ('the ohio state university',               'osu'),
+    ('rutgers university',                      'rutgers'),
+    ('nisl, tsinghua university',               'tsinghua')
 ]
 
 def guess_affiliation_from_company(user):
@@ -77,7 +82,7 @@ def guess_affiliation(user):
         return email
 
     company = guess_affiliation_from_company(user)
-    return company if company else 'other'
+    return company if company else 'unknown'
 
 with open(PROJECT+'.pickle', 'rb') as f:
     pulls, users = pickle.load(f)
