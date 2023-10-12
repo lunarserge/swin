@@ -1,12 +1,14 @@
 PROJECT = ''
 
 import pickle
+from swin.GitHub import mapper
 
 '''
 List of generic email domains that can't help with determining user affiliation.
 '''
 GENERIC_DOMAINS = [
     'gmail',
+    'mail',
     'outlook',
     'me'
 ]
@@ -31,15 +33,19 @@ def guess_affiliation_from_email(user):
 Map of known translations from company info into affiliation.
 '''
 COMPANY_TO_AFFILIATION = [
-    ('advanced micro devices inc.',             'amd'),
-    ('stasosphere online inc. / contextual.ai', 'contextual'),
-    ('harbin institute of technology',          'hit'),
-    ('information sciences institute',          'isi'),
-    ('usc information sciences institute',      'isi'),
-    ('https://github.com/microsoft',            'microsoft'),
-    ('the ohio state university',               'osu'),
-    ('rutgers university',                      'rutgers'),
-    ('nisl, tsinghua university',               'tsinghua')
+    ('advanced micro devices inc.',                 'amd'),
+    ('stasosphere online inc. / contextual.ai',     'contextual'),
+    ('institute for health metrics and evaluation', 'healthdata'),
+    ('harbin institute of technology',              'hit'),
+    ('information sciences institute',              'isi'),
+    ('usc information sciences institute',          'isi'),
+    ('facebook',                                    'meta'),
+    ('https://github.com/microsoft',                'microsoft'),
+    ('the ohio state university',                   'osu'),
+    ('ponder-org',                                  'ponder'),
+    ('ponder.io',                                   'ponder'),
+    ('rutgers university',                          'rutgers'),
+    ('nisl, tsinghua university',                   'tsinghua')
 ]
 
 def guess_affiliation_from_company(user):

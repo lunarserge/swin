@@ -72,7 +72,7 @@ if finish > start:
         users = []
         if g.rate_limiting[0] < pr_to-pr_from:
             wait_rate_limiting_reset()
-        log(f'Started download for batch #{batch} (PRs {pr_from}-{pr_to})')
+        log(f'Started download for batch #{batch} (PRs {pr_from}-{pr_to-1})')
         for pr in pulls[pr_from:pr_to]:
             user = pr.user
             email = user.email # this will trigger user data download from GitHub
