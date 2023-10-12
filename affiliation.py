@@ -4,13 +4,32 @@ import pickle
 from swin.GitHub import mapper
 
 '''
+List of known translations from user login into affiliation.
+'''
+LOGIN_TO_AFFILIATION = [
+    ('weiwangmeta', 'meta')
+]
+
+def guess_affiliation_from_login(user):
+    '''
+    Guess user affiliation based on login.
+    'user' is PyGithub user descriptor.
+    '''
+    for l,affiliation in LOGIN_TO_AFFILIATION:
+        if l == user.login:
+            return affiliation
+    return None
+
+'''
 List of generic email domains that can't help with determining user affiliation.
 '''
 GENERIC_DOMAINS = [
     'gmail',
     'mail',
     'outlook',
-    'me'
+    'me',
+    'thiagocrepaldi' # this one is not generic, but doesn't help with the affiliation either,
+                     # so ignoring email in order to pick up the affiliation from the company info
 ]
 
 def guess_affiliation_from_email(user):
@@ -81,9 +100,13 @@ def guess_affiliation(user):
     Guess user affiliation.
     'user' is PyGithub user descriptor.
     '''
-    email = guess_affiliation_from_email(user)
+    # prefer login-based affiliation if known
+    login_affiliation = guess_affiliation_from_login(user)
+    if login_affiliation:
+        return login_affiliation
 
-    # prefer email if it is specified
+    # then prefer email if it is specified
+    email = guess_affiliation_from_email(user)
     if email:
         return email
 
