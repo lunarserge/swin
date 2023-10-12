@@ -19,6 +19,7 @@ _AFFILIATION_TO_FULL = [
     ('hit',        'Harbin Institute of Technology'),
     ('intel',      'Intel'),
     ('microsoft',  'Microsoft'),
+    ('nvidia',     'Nvidia'),
     ('ponder',     'Ponder'),
     ('quansight',  'Quansight'),
     ('rutgers',    'Rutgers University'),
