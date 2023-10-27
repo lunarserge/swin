@@ -15,7 +15,14 @@ for i in range(len(pulls)):
         continue
 
     # only process contribution that is merged and closed
-    if pr.merged_at and pr.closed_at:
+    if pr.closed_at:
+        if not pr.merged_at:
+            for label in pr.labels:
+                if label.name.lower() == 'merged':
+                    break
+            else:
+                continue
+
         new_pulls.append(pr)
         new_users.append(users[i])
 
