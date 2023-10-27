@@ -9,6 +9,7 @@ List of known translations from user login into affiliation.
 LOGIN_TO_AFFILIATION = [
     ('SherlockNoMad', 'meta'), # linkedin (Sherlock Huang)
     ('ZainRizvi',     'meta'), # github.com/ZainRizvi
+    ('anijain2305',   'meta'), # github.com/anijain2305
     ('desertfire',    'meta'), # linkedin (Bin Bao)
     ('malfet',        'meta'), # linkedin (Nikita Shulga)
     ('weiwangmeta',   'meta')
@@ -50,6 +51,8 @@ that belong to a person, not a company.
 '''
 NOT_TELLING_DOMAINS = [
     'gmail',         # generic
+    'jezng',         # private (jezng.com)
+    'karetnikov',    # private (karetnikov.org)
     'mail',          # generic
     'outlook',       # generic
     'me',            # generic
@@ -65,11 +68,21 @@ def guess_affiliation_from_email(user):
     if not email:
         return None
 
-    index = last_dot = email.rfind('.')
+    index = dot = email.rfind('.')
     while True:
         index -= 1
         if email[index] in '@.':
-            res = email[index+1:last_dot]
+            res = email[index+1:dot]
+
+            # Keeping moving left for 'edu' under country domains.
+            if res == 'edu':
+                dot = index
+                while True:
+                    index -= 1
+                    if email[index] in '@.':
+                        res = email[index+1:dot]
+                        break
+
             return None if res in NOT_TELLING_DOMAINS else res
 
 '''
@@ -82,7 +95,9 @@ COMPANY_TO_AFFILIATION = [
     ('harbin institute of technology',              'hit'),
     ('information sciences institute',              'isi'),
     ('usc information sciences institute',          'isi'),
+    ('kumo.ai',                                     'kumo'),
     ('facebook',                                    'meta'),
+    ('meta/facebook',                               'meta'),
     ('https://github.com/microsoft',                'microsoft'),
     ('the ohio state university',                   'osu'),
     ('ponder-org',                                  'ponder'),
