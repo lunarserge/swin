@@ -7,7 +7,11 @@ from swin.GitHub import mapper
 List of known translations from user login into affiliation.
 '''
 LOGIN_TO_AFFILIATION = [
-    ('weiwangmeta', 'meta')
+    ('SherlockNoMad', 'meta'), # linkedin (Sherlock Huang)
+    ('ZainRizvi',     'meta'), # github.com/ZainRizvi
+    ('desertfire',    'meta'), # linkedin (Bin Bao)
+    ('malfet',        'meta'), # linkedin (Nikita Shulga)
+    ('weiwangmeta',   'meta')
 ]
 
 def guess_affiliation_from_login(user):
@@ -21,15 +25,35 @@ def guess_affiliation_from_login(user):
     return None
 
 '''
-List of generic email domains that can't help with determining user affiliation.
+List of known translations from user GitHub organizations into affiliation.
 '''
-GENERIC_DOMAINS = [
-    'gmail',
-    'mail',
-    'outlook',
-    'me',
-    'thiagocrepaldi' # this one is not generic, but doesn't help with the affiliation either,
-                     # so ignoring email in order to pick up the affiliation from the company info
+ORG_TO_AFFILIATION = [
+    ('facebookresearch', 'meta')
+]
+
+def guess_affiliation_from_orgs(user):
+    '''
+    Guess user affiliation based on GitHub organizations.
+    'user' is PyGithub user descriptor.
+    '''
+    for org in user.get_orgs():
+        login = org.login
+        for l,affiliation in ORG_TO_AFFILIATION:
+            if l == login:
+                return affiliation
+    return None
+
+'''
+List of email domains that can't help with determining user affiliation.
+These are either generic domains (like gmail) or private domains
+that belong to a person, not a company.
+'''
+NOT_TELLING_DOMAINS = [
+    'gmail',         # generic
+    'mail',          # generic
+    'outlook',       # generic
+    'me',            # generic
+    'thiagocrepaldi' # private (thiagocrepaldi.com)
 ]
 
 def guess_affiliation_from_email(user):
@@ -46,7 +70,7 @@ def guess_affiliation_from_email(user):
         index -= 1
         if email[index] in '@.':
             res = email[index+1:last_dot]
-            return None if res in GENERIC_DOMAINS else res
+            return None if res in NOT_TELLING_DOMAINS else res
 
 '''
 Map of known translations from company info into affiliation.
@@ -104,6 +128,13 @@ def guess_affiliation(user):
     login_affiliation = guess_affiliation_from_login(user)
     if login_affiliation:
         return login_affiliation
+
+    '''
+    # then prefer GitHub organizations
+    org_affiliation = guess_affiliation_from_orgs(user)
+    if org_affiliation:
+        return org_affiliation
+    '''
 
     # then prefer email if it is specified
     email = guess_affiliation_from_email(user)
