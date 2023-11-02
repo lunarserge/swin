@@ -75,7 +75,7 @@ def guess_affiliation_from_email(user):
             res = email[index+1:dot]
 
             # Keeping moving left for 'edu' under country domains.
-            if res == 'edu':
+            if res in ['ac', 'edu']:
                 dot = index
                 while True:
                     index -= 1
@@ -90,6 +90,7 @@ Map of known translations from company info into affiliation.
 '''
 COMPANY_TO_AFFILIATION = [
     ('advanced micro devices inc.',                 'amd'),
+    ('university of cambridge',                     'cam'),
     ('stasosphere online inc. / contextual.ai',     'contextual'),
     ('institute for health metrics and evaluation', 'healthdata'),
     ('harbin institute of technology',              'hit'),
@@ -99,6 +100,7 @@ COMPANY_TO_AFFILIATION = [
     ('facebook',                                    'meta'),
     ('meta/facebook',                               'meta'),
     ('https://github.com/microsoft',                'microsoft'),
+    ('nanyang technological university',            'ntu'),
     ('the ohio state university',                   'osu'),
     ('ponder-org',                                  'ponder'),
     ('ponder.io',                                   'ponder'),

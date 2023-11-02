@@ -13,6 +13,7 @@ Map of known translations from affiliations into full entity names.
 '''
 _AFFILIATION_TO_FULL = [
     ('berkeley',    'University of California, Berkeley'),
+    ('cam',         'University of Cambridge'),
     ('contextual',  'Contextual AI'),
     ('databricks',  'Databricks'),
     ('gatech',      'Georgia Institute of Technology'),
@@ -23,6 +24,7 @@ _AFFILIATION_TO_FULL = [
     ('meta',        'Meta'),
     ('microsoft',   'Microsoft'),
     ('mit',         'Massachusetts Institute of Technology'),
+    ('ntu',         'Nanyang Technological University'),
     ('nvidia',      'Nvidia'),
     ('ponder',      'Ponder'),
     ('quansight',   'Quansight'),
