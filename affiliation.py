@@ -10,9 +10,23 @@ LOGIN_TO_AFFILIATION = [
     ('SherlockNoMad', 'meta'), # linkedin (Sherlock Huang)
     ('ZainRizvi',     'meta'), # github.com/ZainRizvi
     ('anijain2305',   'meta'), # github.com/anijain2305
+    ('angelayi',      'meta'), # linkedin.com/in/yiangela
+    ('awgu',          'meta'), # web search (Andrew Gu)
+    ('bdhirsh',       'meta'), # linkedin.com/in/hirshbrian
+    ('dagitses',      'meta'), # linkedin.com/in/michaeldagitses
     ('desertfire',    'meta'), # linkedin (Bin Bao)
+    ('eellison',      'meta'), # web search (Elias Ellison)
+    ('fegin',         'meta'), # linkedin.com/in/cchuangtw
+    ('huydhn',        'meta'), # linkedin.com/in/huy-do
+    ('janeyx99',      'meta'), # linkedin.com/in/jane-yuan-xu
+    ('jansel',        'meta'), # linkedin.com/in/jansel
+    ('jcaip',         'meta'), # linkedin.com/in/jcaip
     ('malfet',        'meta'), # linkedin (Nikita Shulga)
-    ('weiwangmeta',   'meta')
+    ('wanchaol',      'meta'), # linkedin.com/in/wanchaol
+    ('wconstab',      'meta'), # linkedin.com/in/will-constable-969a53b
+    ('weiwangmeta',   'meta'),
+    ('wz337',         'meta'), # linkedin.com/in/weseeweisi
+    ('zou3519',       'meta')  # linkedin.com/in/richard-zou-bb3558a6
 ]
 
 def guess_affiliation_from_login(user):
@@ -59,6 +73,13 @@ NOT_TELLING_DOMAINS = [
     'thiagocrepaldi' # private (thiagocrepaldi.com)
 ]
 
+'''
+Map of known translations into primary email domains.
+'''
+TO_PRIMARY_DOMAINS = [
+    ('fb', 'meta')
+]
+
 def guess_affiliation_from_email(user):
     '''
     Guess user affiliation based on email.
@@ -82,8 +103,17 @@ def guess_affiliation_from_email(user):
                     if email[index] in '@.':
                         res = email[index+1:dot]
                         break
+            break
 
-            return None if res in NOT_TELLING_DOMAINS else res
+    if res in NOT_TELLING_DOMAINS:
+        return None
+
+    # Check if we can translate into a primary domain.
+    for e,primary in TO_PRIMARY_DOMAINS:
+        if e == res:
+            return primary
+
+    return res
 
 '''
 Map of known translations from company info into affiliation.

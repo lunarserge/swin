@@ -12,6 +12,7 @@ def _map(term, translation_map):
 Map of known translations from affiliations into full entity names.
 '''
 _AFFILIATION_TO_FULL = [
+    ('amd',         'AMD'),
     ('berkeley',    'University of California, Berkeley'),
     ('cam',         'University of Cambridge'),
     ('contextual',  'Contextual AI'),
