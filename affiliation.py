@@ -7,26 +7,29 @@ from swin.GitHub import mapper
 List of known translations from user login into affiliation.
 '''
 LOGIN_TO_AFFILIATION = [
-    ('SherlockNoMad', 'meta'), # linkedin (Sherlock Huang)
-    ('ZainRizvi',     'meta'), # github.com/ZainRizvi
-    ('anijain2305',   'meta'), # github.com/anijain2305
-    ('angelayi',      'meta'), # linkedin.com/in/yiangela
-    ('awgu',          'meta'), # web search (Andrew Gu)
-    ('bdhirsh',       'meta'), # linkedin.com/in/hirshbrian
-    ('dagitses',      'meta'), # linkedin.com/in/michaeldagitses
-    ('desertfire',    'meta'), # linkedin (Bin Bao)
-    ('eellison',      'meta'), # web search (Elias Ellison)
-    ('fegin',         'meta'), # linkedin.com/in/cchuangtw
-    ('huydhn',        'meta'), # linkedin.com/in/huy-do
-    ('janeyx99',      'meta'), # linkedin.com/in/jane-yuan-xu
-    ('jansel',        'meta'), # linkedin.com/in/jansel
-    ('jcaip',         'meta'), # linkedin.com/in/jcaip
-    ('malfet',        'meta'), # linkedin (Nikita Shulga)
-    ('wanchaol',      'meta'), # linkedin.com/in/wanchaol
-    ('wconstab',      'meta'), # linkedin.com/in/will-constable-969a53b
+    ('SherlockNoMad', 'meta'),   # linkedin (Sherlock Huang)
+    ('ZainRizvi',     'meta'),   # github.com/ZainRizvi
+    ('anijain2305',   'meta'),   # github.com/anijain2305
+    ('angelayi',      'meta'),   # linkedin.com/in/yiangela
+    ('awgu',          'meta'),   # web search (Andrew Gu)
+    ('bdhirsh',       'meta'),   # linkedin.com/in/hirshbrian
+    ('dagitses',      'meta'),   # linkedin.com/in/michaeldagitses
+    ('desertfire',    'meta'),   # linkedin (Bin Bao)
+    ('eellison',      'meta'),   # web search (Elias Ellison)
+    ('fegin',         'meta'),   # linkedin.com/in/cchuangtw
+    ('huydhn',        'meta'),   # linkedin.com/in/huy-do
+    ('janeyx99',      'meta'),   # linkedin.com/in/jane-yuan-xu
+    ('jansel',        'meta'),   # linkedin.com/in/jansel
+    ('jcaip',         'meta'),   # linkedin.com/in/jcaip
+    ('malfet',        'meta'),   # linkedin (Nikita Shulga)
+    ('msaroufim',     'meta'),   # linkedin.com/in/marksaroufim
+    ('namannandan',   'amazon'), # linkedin.com/in/namannandan
+    ('sekyondaMeta',  'meta'),
+    ('wanchaol',      'meta'),   # linkedin.com/in/wanchaol
+    ('wconstab',      'meta'),   # linkedin.com/in/will-constable-969a53b
     ('weiwangmeta',   'meta'),
-    ('wz337',         'meta'), # linkedin.com/in/weseeweisi
-    ('zou3519',       'meta')  # linkedin.com/in/richard-zou-bb3558a6
+    ('wz337',         'meta'),   # linkedin.com/in/weseeweisi
+    ('zou3519',       'meta')    # linkedin.com/in/richard-zou-bb3558a6
 ]
 
 def guess_affiliation_from_login(user):
@@ -68,7 +71,7 @@ NOT_TELLING_DOMAINS = [
     'jezng',         # private (jezng.com)
     'karetnikov',    # private (karetnikov.org)
     'mail',          # generic
-    'outlook',       # generic
+    'outlook',       # genericemail
     'me',            # generic
     'thiagocrepaldi' # private (thiagocrepaldi.com)
 ]
@@ -89,6 +92,7 @@ def guess_affiliation_from_email(user):
     if not email:
         return None
 
+    email = email.lower()
     index = dot = email.rfind('.')
     while True:
         index -= 1
@@ -156,6 +160,8 @@ def guess_affiliation_from_company(user):
     # work in low case to match email-based affiliations
     company = company.lower()
 
+    if company.endswith(' inc'):
+        company = company[:-4]
     if company.endswith(' corporation'):
         company = company[:-12]
 
