@@ -14,6 +14,7 @@ Map of known translations from affiliations into full entity names.
 _AFFILIATION_TO_FULL = [
     ('amazon',      'Amazon'),
     ('amd',         'AMD'),
+    ('apple',       'Apple'),
     ('berkeley',    'University of California, Berkeley'),
     ('cam',         'University of Cambridge'),
     ('contextual',  'Contextual AI'),
@@ -23,6 +24,7 @@ _AFFILIATION_TO_FULL = [
     ('hit',         'Harbin Institute of Technology'),
     ('hiwhy',       'HIWHY'),
     ('huggingface', 'Hugging Face'),
+    ('ibm',         'IBM'),
     ('ideas2it',    'Ideas2IT'),
     ('intel',       'Intel'),
     ('kaizan',      'Kaizan'),

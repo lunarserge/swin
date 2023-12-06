@@ -79,14 +79,15 @@ These are either generic domains (like gmail) or private domains
 that belong to a person, not a company.
 '''
 NOT_TELLING_DOMAINS = [
-    'gmail',         # generic
-    'jezng',         # private (jezng.com)
-    'karetnikov',    # private (karetnikov.org)
-    'lysand',        # private (lysand.re)
-    'mail',          # generic
-    'outlook',       # genericemail
-    'me',            # generic
-    'thiagocrepaldi' # private (thiagocrepaldi.com)
+    'gmail',          # generic
+    'jezng',          # private (jezng.com)
+    'karetnikov',     # private (karetnikov.org)
+    'lysand',         # private (lysand.re)
+    'mail',           # generic
+    'me',             # generic
+    'outlook',        # generic
+    'thiagocrepaldi', # private (thiagocrepaldi.com)
+    'yahoo'           # generic
 ]
 
 '''
@@ -147,6 +148,8 @@ COMPANY_TO_AFFILIATION = [
     ('kaizan & bbk',                                'kaizan'),
     ('kumo.ai',                                     'kumo'),
     ('facebook',                                    'meta'),
+    ('facebook ai',                                 'meta'),
+    ('facebookresearch',                            'meta'),
     ('meta/facebook',                               'meta'),
     ('https://github.com/microsoft',                'microsoft'),
     ('nanyang technological university',            'ntu'),
@@ -155,6 +158,7 @@ COMPANY_TO_AFFILIATION = [
     ('ponder.io',                                   'ponder'),
     ('rutgers university',                          'rutgers'),
     ('nisl, tsinghua university',                   'tsinghua'),
+    ('uc irvine',                                   'uci'),
     ('federal university of rio de janeiro',        'ufrj'),
     ('zhejiang university',                         'zju')
 ]
