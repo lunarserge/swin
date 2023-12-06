@@ -43,7 +43,19 @@ def print_top(start_date, end_date):
     relevant_affiliations = \
         [a if counter[a] >= threshold else 'other' for a in relevant_affiliations]
 
-    print(f'\nTop contributors for {start_date} - {end_date-timedelta(1)}:')
+    '''
+    unknowns = {}
+    for i in range(len(relevant_affiliations)):
+        if relevant_affiliations[i] == 'unknown':
+            user = relevant_PRs[i].user.login
+            if user in unknowns:
+                unknowns[user] += 1
+            else:
+                unknowns[user] = 1
+    print(Counter(unknowns))
+    '''
+
+    print(f'\nTop contributors for {start_date} - {end_date-timedelta(1)} (total {len(relevant_affiliations)} PRs):')
     for player,amount in Counter(relevant_affiliations).most_common():
         print(f'  - {mapper.get_full_entity_name(player)}: {amount}')
 
@@ -77,7 +89,7 @@ def draw_PRs(start_date, end_date, contributors):
         timestamps.append(stamp)
 
     fig, axes = plt.subplots()
-    axes.set_title('# Contributed PRs (monthly)')
+    axes.set_title('# contributed PRs / monthly: ' + PROJECT)
 
     for contributor in contributors:
         amount = [0] * len(timestamps)
@@ -85,7 +97,7 @@ def draw_PRs(start_date, end_date, contributors):
             if relevant_affiliations[i] == contributor:
                 amount[bisect.bisect(timestamps,relevant_PRs[i].closed_at.date())-1] += 1
         axes.plot(timestamps,amount)
-    axes.legend(contributors)
+    axes.legend([mapper.get_full_entity_name(c) for c in contributors])
 
     fig.savefig('contribution')
 

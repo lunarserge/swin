@@ -7,29 +7,41 @@ from swin.GitHub import mapper
 List of known translations from user login into affiliation.
 '''
 LOGIN_TO_AFFILIATION = [
-    ('SherlockNoMad', 'meta'),   # linkedin (Sherlock Huang)
-    ('ZainRizvi',     'meta'),   # github.com/ZainRizvi
-    ('anijain2305',   'meta'),   # github.com/anijain2305
-    ('angelayi',      'meta'),   # linkedin.com/in/yiangela
-    ('awgu',          'meta'),   # web search (Andrew Gu)
-    ('bdhirsh',       'meta'),   # linkedin.com/in/hirshbrian
-    ('dagitses',      'meta'),   # linkedin.com/in/michaeldagitses
-    ('desertfire',    'meta'),   # linkedin (Bin Bao)
-    ('eellison',      'meta'),   # web search (Elias Ellison)
-    ('fegin',         'meta'),   # linkedin.com/in/cchuangtw
-    ('huydhn',        'meta'),   # linkedin.com/in/huy-do
-    ('janeyx99',      'meta'),   # linkedin.com/in/jane-yuan-xu
-    ('jansel',        'meta'),   # linkedin.com/in/jansel
-    ('jcaip',         'meta'),   # linkedin.com/in/jcaip
-    ('malfet',        'meta'),   # linkedin (Nikita Shulga)
-    ('msaroufim',     'meta'),   # linkedin.com/in/marksaroufim
-    ('namannandan',   'amazon'), # linkedin.com/in/namannandan
-    ('sekyondaMeta',  'meta'),
-    ('wanchaol',      'meta'),   # linkedin.com/in/wanchaol
-    ('wconstab',      'meta'),   # linkedin.com/in/will-constable-969a53b
-    ('weiwangmeta',   'meta'),
-    ('wz337',         'meta'),   # linkedin.com/in/weseeweisi
-    ('zou3519',       'meta')    # linkedin.com/in/richard-zou-bb3558a6
+    ('SherlockNoMad',    'meta'),        # linkedin.com/in/sherlock-baihan-huang-07787a59
+    ('ZainRizvi',        'meta'),        # github.com/ZainRizvi
+    ('amyeroberts',      'huggingface'), # linkedin.com/in/amy-roberts-70903a6a
+    ('anijain2305',      'meta'),        # github.com/anijain2305
+    ('angelayi',         'meta'),        # linkedin.com/in/yiangela
+    ('awgu',             'meta'),        # linkedin.com/in/~andrew
+    ('bdhirsh',          'meta'),        # linkedin.com/in/hirshbrian
+    ('dagitses',         'meta'),        # linkedin.com/in/michaeldagitses
+    ('desertfire',       'meta'),        # linkedin.com/in/bin-bao-9b095812
+    ('eellison',         'meta'),        # web search (Elias Ellison)
+    ('fegin',            'meta'),        # linkedin.com/in/cchuangtw
+    ('hi-sushanta',      'hiwhy'),       # linkedin.com/in/sushanta-das-
+    ('huydhn',           'meta'),        # linkedin.com/in/huy-do
+    ('janeyx99',         'meta'),        # linkedin.com/in/jane-yuan-xu
+    ('jansel',           'meta'),        # linkedin.com/in/jansel
+    ('jcaip',            'meta'),        # linkedin.com/in/jcaip
+    ('kshitij12345',     'quansight'),   # linkedin.com/in/kshiteejkalambarkar
+    ('kumpera',          'meta'),        # linkedin.com/in/rodrigokumpera
+    ('malfet',           'meta'),        # linkedin.com/in/nikita-shulga-2875828
+    ('msaroufim',        'meta'),        # linkedin.com/in/marksaroufim
+    ('namannandan',      'amazon'),      # linkedin.com/in/namannandan
+    ('ngimel',           'meta'),        # linkedin.com/in/natalia-gimelshein-8347a480
+    ('patrickvonplaten', 'huggingface'), # linkedin.com/in/patrick-von-platen-343401123
+    ('sekyondaMeta',     'meta'),
+    ('sgugger',          'huggingface'), # linkedin.com/in/sylvain-gugger-74218b144
+    ('soulitzer',        'meta'),        # linkedin.com/in/jeffrey-wan
+    ('susnato',          'uem'),         # linkedin.com/in/susnato-dhar-922239211
+    ('wanchaol',         'meta'),        # linkedin.com/in/wanchaol
+    ('wconstab',         'meta'),        # linkedin.com/in/will-constable-969a53b
+    ('weiwangmeta',      'meta'),
+    ('williamwen42',     'meta'),        # linkedin.com/in/william-wen-1373b8156
+    ('wz337',            'meta'),        # linkedin.com/in/weseeweisi
+    ('ydshieh',          'huggingface'), # linkedin.com/in/yih-dar-shieh
+    ('ydwu4',            'meta'),        # web search (Yidi Wu)
+    ('zou3519',          'meta')         # linkedin.com/in/richard-zou-bb3558a6
 ]
 
 def guess_affiliation_from_login(user):
@@ -70,6 +82,7 @@ NOT_TELLING_DOMAINS = [
     'gmail',         # generic
     'jezng',         # private (jezng.com)
     'karetnikov',    # private (karetnikov.org)
+    'lysand',        # private (lysand.re)
     'mail',          # generic
     'outlook',       # genericemail
     'me',            # generic
@@ -89,7 +102,7 @@ def guess_affiliation_from_email(user):
     'user' is PyGithub user descriptor.
     '''
     email = user.email
-    if not email:
+    if not email or '.' not in email:
         return None
 
     email = email.lower()
@@ -128,8 +141,10 @@ COMPANY_TO_AFFILIATION = [
     ('stasosphere online inc. / contextual.ai',     'contextual'),
     ('institute for health metrics and evaluation', 'healthdata'),
     ('harbin institute of technology',              'hit'),
+    ('hugging face',                                'huggingface'),
     ('information sciences institute',              'isi'),
     ('usc information sciences institute',          'isi'),
+    ('kaizan & bbk',                                'kaizan'),
     ('kumo.ai',                                     'kumo'),
     ('facebook',                                    'meta'),
     ('meta/facebook',                               'meta'),
@@ -139,7 +154,9 @@ COMPANY_TO_AFFILIATION = [
     ('ponder-org',                                  'ponder'),
     ('ponder.io',                                   'ponder'),
     ('rutgers university',                          'rutgers'),
-    ('nisl, tsinghua university',                   'tsinghua')
+    ('nisl, tsinghua university',                   'tsinghua'),
+    ('federal university of rio de janeiro',        'ufrj'),
+    ('zhejiang university',                         'zju')
 ]
 
 def guess_affiliation_from_company(user):

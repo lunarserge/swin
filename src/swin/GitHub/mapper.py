@@ -21,8 +21,11 @@ _AFFILIATION_TO_FULL = [
     ('gatech',      'Georgia Institute of Technology'),
     ('healthdata',  'Institute For Health Metrics and Evaluation'),
     ('hit',         'Harbin Institute of Technology'),
+    ('hiwhy',       'HIWHY'),
+    ('huggingface', 'Hugging Face'),
     ('ideas2it',    'Ideas2IT'),
     ('intel',       'Intel'),
+    ('kaizan',      'Kaizan'),
     ('kumo',        'Kumo'),
     ('meta',        'Meta'),
     ('microsoft',   'Microsoft'),
@@ -36,8 +39,11 @@ _AFFILIATION_TO_FULL = [
     ('tsinghua',    'Tsinghua University'),
     ('tu-dortmund', 'Dortmund University'),
     ('uci',         'University of California, Irvine'),
+    ('uem',         'University of Engineering & Management, Kolkata'),
+    ('ufrj',        'Federal University of Rio de Janeiro'),
     ('ustc',        'University of Science and Technology of China'),
-    ('yandex',      'Yandex')
+    ('yandex',      'Yandex'),
+    ('zju',         'Zhejiang University')
 ]
 
 def get_full_entity_name(affiliation):

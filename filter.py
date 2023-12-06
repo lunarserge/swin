@@ -2,6 +2,15 @@ PROJECT = ''
 
 import pickle
 
+'''
+Known bot accounts.
+'''
+BOTS = [
+    'dependabot[bot]',
+    'pytorchmergebot',
+    'pytorchupdatebot'
+]
+
 with open(PROJECT+'.pickle', 'rb') as f:
     pulls, users = pickle.load(f)
 
@@ -11,7 +20,7 @@ for i in range(len(pulls)):
     pr = pulls[i]
 
     # filter out contribution from bots
-    if pr.user.login == 'dependabot[bot]':
+    if pr.user.login in BOTS:
         continue
 
     # only process contribution that is merged and closed
