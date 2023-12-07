@@ -18,11 +18,13 @@ LOGIN_TO_AFFILIATION = [
     ('desertfire',       'meta'),        # linkedin.com/in/bin-bao-9b095812
     ('eellison',         'meta'),        # web search (Elias Ellison)
     ('fegin',            'meta'),        # linkedin.com/in/cchuangtw
+    ('guillaumekln',     'apple'),       # linkedin.com/in/guillaumekln
     ('hi-sushanta',      'hiwhy'),       # linkedin.com/in/sushanta-das-
     ('huydhn',           'meta'),        # linkedin.com/in/huy-do
     ('janeyx99',         'meta'),        # linkedin.com/in/jane-yuan-xu
     ('jansel',           'meta'),        # linkedin.com/in/jansel
     ('jcaip',            'meta'),        # linkedin.com/in/jcaip
+    ('jongwook',         'openai'),      # github.com/jongwook
     ('kshitij12345',     'quansight'),   # linkedin.com/in/kshiteejkalambarkar
     ('kumpera',          'meta'),        # linkedin.com/in/rodrigokumpera
     ('malfet',           'meta'),        # linkedin.com/in/nikita-shulga-2875828

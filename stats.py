@@ -1,4 +1,5 @@
 PROJECT = ''
+CONTRIBUTORS = []
 
 import bisect
 from collections import Counter
@@ -110,4 +111,8 @@ last_year  = date(this_month.year-1, this_month.month, 1)
 print_top(last_year, this_month)
 print_top(last_month, this_month)
 
-draw_PRs(last_year, this_month, [])
+for i in range(len(affiliations)):
+    if affiliations[i] not in CONTRIBUTORS:
+        affiliations[i] = 'other'
+
+draw_PRs(last_year, this_month, CONTRIBUTORS)
