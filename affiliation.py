@@ -4,9 +4,20 @@ import pickle
 from swin.GitHub import mapper
 
 '''
+lxning
+mrwyattii
+q10
+sryap
+udaij12
+'''
+
+'''
 List of known translations from user login into affiliation.
 '''
 LOGIN_TO_AFFILIATION = [
+    ('DanilBaibak',      'meta'),        # linkedin.com/in/danylo-baibak
+    ('FindHao',          'meta'),        # linkedin.com/in/haoyueming
+    ('NicolasHug',       'meta'),        # github.com/NicolasHug
     ('SherlockNoMad',    'meta'),        # linkedin.com/in/sherlock-baihan-huang-07787a59
     ('ZainRizvi',        'meta'),        # github.com/ZainRizvi
     ('amyeroberts',      'huggingface'), # linkedin.com/in/amy-roberts-70903a6a
@@ -21,17 +32,22 @@ LOGIN_TO_AFFILIATION = [
     ('guillaumekln',     'apple'),       # linkedin.com/in/guillaumekln
     ('hi-sushanta',      'hiwhy'),       # linkedin.com/in/sushanta-das-
     ('huydhn',           'meta'),        # linkedin.com/in/huy-do
+    ('jagadeeshi2i',     'ideas2it'),    # linkedin.com/in/jagadeeshjaganathan
     ('janeyx99',         'meta'),        # linkedin.com/in/jane-yuan-xu
     ('jansel',           'meta'),        # linkedin.com/in/jansel
     ('jcaip',            'meta'),        # linkedin.com/in/jcaip
     ('jongwook',         'openai'),      # github.com/jongwook
     ('kshitij12345',     'quansight'),   # linkedin.com/in/kshiteejkalambarkar
     ('kumpera',          'meta'),        # linkedin.com/in/rodrigokumpera
+    ('loadams',          'microsoft'),   # linkedin.com/in/logansadams
+    ('lekurile',         'microsoft'),   # linkedin.com/in/lev-kurilenko-99a217117
     ('malfet',           'meta'),        # linkedin.com/in/nikita-shulga-2875828
     ('msaroufim',        'meta'),        # linkedin.com/in/marksaroufim
     ('namannandan',      'amazon'),      # linkedin.com/in/namannandan
     ('ngimel',           'meta'),        # linkedin.com/in/natalia-gimelshein-8347a480
+    ('osalpekar',        'meta'),        # github.com/osalpekar
     ('patrickvonplaten', 'huggingface'), # linkedin.com/in/patrick-von-platen-343401123
+    ('samadejacobs',     'microsoft'),   # github.com/samadejacobs
     ('sekyondaMeta',     'meta'),
     ('sgugger',          'huggingface'), # linkedin.com/in/sylvain-gugger-74218b144
     ('soulitzer',        'meta'),        # linkedin.com/in/jeffrey-wan
@@ -41,6 +57,7 @@ LOGIN_TO_AFFILIATION = [
     ('weiwangmeta',      'meta'),
     ('williamwen42',     'meta'),        # linkedin.com/in/william-wen-1373b8156
     ('wz337',            'meta'),        # linkedin.com/in/weseeweisi
+    ('xuzhao9',          'meta'),        # linkedin.com/in/xu-zhao-406b9219
     ('ydshieh',          'huggingface'), # linkedin.com/in/yih-dar-shieh
     ('ydwu4',            'meta'),        # web search (Yidi Wu)
     ('zou3519',          'meta')         # linkedin.com/in/richard-zou-bb3558a6
@@ -81,14 +98,17 @@ These are either generic domains (like gmail) or private domains
 that belong to a person, not a company.
 '''
 NOT_TELLING_DOMAINS = [
+    'foxmail',        # generic
     'gmail',          # generic
     'jezng',          # private (jezng.com)
     'karetnikov',     # private (karetnikov.org)
+    'live',           # generic
     'lysand',         # private (lysand.re)
     'mail',           # generic
     'me',             # generic
     'outlook',        # generic
     'thiagocrepaldi', # private (thiagocrepaldi.com)
+    'xuzhao',         # private (xuzhao.net)
     'yahoo'           # generic
 ]
 
@@ -96,7 +116,8 @@ NOT_TELLING_DOMAINS = [
 Map of known translations into primary email domains.
 '''
 TO_PRIMARY_DOMAINS = [
-    ('fb', 'meta')
+    ('fb',     'meta'),
+    ('habana', 'intel')
 ]
 
 def guess_affiliation_from_email(user):
@@ -144,9 +165,12 @@ COMPANY_TO_AFFILIATION = [
     ('stasosphere online inc. / contextual.ai',     'contextual'),
     ('institute for health metrics and evaluation', 'healthdata'),
     ('harbin institute of technology',              'hit'),
+    ('huawei technologies co., ltd',                'huawei'),
+    ('huawei technology co., ltd.',                 'huawei'),
     ('hugging face',                                'huggingface'),
     ('information sciences institute',              'isi'),
     ('usc information sciences institute',          'isi'),
+    ('jpmorgan chase & co.',                        'jpmorganchase'),
     ('kaizan & bbk',                                'kaizan'),
     ('kumo.ai',                                     'kumo'),
     ('facebook',                                    'meta'),
@@ -159,9 +183,11 @@ COMPANY_TO_AFFILIATION = [
     ('ponder-org',                                  'ponder'),
     ('ponder.io',                                   'ponder'),
     ('rutgers university',                          'rutgers'),
+    ('stony brook university',                      'stonybrook'),
     ('nisl, tsinghua university',                   'tsinghua'),
     ('uc irvine',                                   'uci'),
     ('federal university of rio de janeiro',        'ufrj'),
+    ('michigannlp',                                 'umich'),
     ('zhejiang university',                         'zju')
 ]
 
@@ -183,8 +209,12 @@ def guess_affiliation_from_company(user):
     # work in low case to match email-based affiliations
     company = company.lower()
 
+    if company.endswith(' research'):
+        company = company[:-9]
     if company.endswith(' inc'):
         company = company[:-4]
+    elif company.endswith(' inc.'):
+        company = company[:-5]
     if company.endswith(' corporation'):
         company = company[:-12]
 
