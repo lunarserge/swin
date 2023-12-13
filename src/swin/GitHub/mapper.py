@@ -34,6 +34,7 @@ _AFFILIATION_TO_FULL = [
     ('jpmorganchase', 'JPMorgan Chase'),
     ('kaizan',        'Kaizan'),
     ('kumo',          'Kumo'),
+    ('lightning',     'Lightning AI'),
     ('meta',          'Meta'),
     ('microsoft',     'Microsoft'),
     ('mit',           'Massachusetts Institute of Technology'),
@@ -47,6 +48,7 @@ _AFFILIATION_TO_FULL = [
     ('stonybrook',    'Stony Brook University'),
     ('striveworks',   'Striveworks'),
     ('sysu',          'Sun Yat-sen University'),
+    ('tensorwerk',    'Tensorwerk'),
     ('tsinghua',      'Tsinghua University'),
     ('tu-dortmund',   'Dortmund University'),
     ('uci',           'University of California, Irvine'),
@@ -55,6 +57,8 @@ _AFFILIATION_TO_FULL = [
     ('umich',         'University of Michigan'),
     ('umn',           'University of Minnesota'),
     ('ustc',          'University of Science and Technology of China'),
+    ('uva',           'University of Amsterdam'),
+    ('valencelabs',   'Valence Labs'),
     ('yandex',        'Yandex'),
     ('zju',           'Zhejiang University')
 ]

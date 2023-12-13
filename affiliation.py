@@ -4,6 +4,7 @@ import pickle
 from swin.GitHub import mapper
 
 '''
+gs-olive
 lxning
 mrwyattii
 q10
@@ -20,9 +21,11 @@ LOGIN_TO_AFFILIATION = [
     ('NicolasHug',       'meta'),        # github.com/NicolasHug
     ('SherlockNoMad',    'meta'),        # linkedin.com/in/sherlock-baihan-huang-07787a59
     ('ZainRizvi',        'meta'),        # github.com/ZainRizvi
+    ('akihironitta',     'lightning'),   # linkedin.com/in/akihironitta
     ('amyeroberts',      'huggingface'), # linkedin.com/in/amy-roberts-70903a6a
     ('anijain2305',      'meta'),        # github.com/anijain2305
     ('angelayi',         'meta'),        # linkedin.com/in/yiangela
+    ('awaelchli',        'lightning'),   # linkedin.com/in/adrian-waelchli
     ('awgu',             'meta'),        # linkedin.com/in/~andrew
     ('bdhirsh',          'meta'),        # linkedin.com/in/hirshbrian
     ('dagitses',         'meta'),        # linkedin.com/in/michaeldagitses
@@ -30,6 +33,7 @@ LOGIN_TO_AFFILIATION = [
     ('eellison',         'meta'),        # web search (Elias Ellison)
     ('fegin',            'meta'),        # linkedin.com/in/cchuangtw
     ('guillaumekln',     'apple'),       # linkedin.com/in/guillaumekln
+    ('hhsecond',         'tensorwerk'),  # github.com/hhsecond
     ('hi-sushanta',      'hiwhy'),       # linkedin.com/in/sushanta-das-
     ('huydhn',           'meta'),        # linkedin.com/in/huy-do
     ('jagadeeshi2i',     'ideas2it'),    # linkedin.com/in/jagadeeshjaganathan
@@ -98,6 +102,7 @@ These are either generic domains (like gmail) or private domains
 that belong to a person, not a company.
 '''
 NOT_TELLING_DOMAINS = [
+    'akihironitta',   # private (www.akihironitta.com)
     'foxmail',        # generic
     'gmail',          # generic
     'jezng',          # private (jezng.com)
@@ -117,6 +122,7 @@ Map of known translations into primary email domains.
 '''
 TO_PRIMARY_DOMAINS = [
     ('fb',     'meta'),
+    ('grid',   'lightning'),
     ('habana', 'intel')
 ]
 
@@ -173,6 +179,10 @@ COMPANY_TO_AFFILIATION = [
     ('jpmorgan chase & co.',                        'jpmorganchase'),
     ('kaizan & bbk',                                'kaizan'),
     ('kumo.ai',                                     'kumo'),
+    ('grid.ai | pytorchlightning',                  'lightning'),
+    ('lightning ai',                                'lightning'),
+    ('lightning-ai',                                'lightning'),
+    ('pytorchlightning & grid.ai',                  'lightning'),
     ('facebook',                                    'meta'),
     ('facebook ai',                                 'meta'),
     ('facebookresearch',                            'meta'),
@@ -188,6 +198,8 @@ COMPANY_TO_AFFILIATION = [
     ('uc irvine',                                   'uci'),
     ('federal university of rio de janeiro',        'ufrj'),
     ('michigannlp',                                 'umich'),
+    ('university of amsterdam',                     'uva'),
+    ('valence labs',                                'valencelabs'),
     ('zhejiang university',                         'zju')
 ]
 
