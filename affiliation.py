@@ -1,4 +1,4 @@
-PROJECT = ''
+PROJECT = 'tensorflow'
 
 import pickle
 from swin.GitHub import mapper
@@ -51,6 +51,7 @@ LOGIN_TO_AFFILIATION = [
     ('ngimel',           'meta'),        # linkedin.com/in/natalia-gimelshein-8347a480
     ('osalpekar',        'meta'),        # github.com/osalpekar
     ('patrickvonplaten', 'huggingface'), # linkedin.com/in/patrick-von-platen-343401123
+    ('rtg0795',          'google'),      # web search (Raviteja Gorijala)
     ('samadejacobs',     'microsoft'),   # github.com/samadejacobs
     ('sekyondaMeta',     'meta'),
     ('sgugger',          'huggingface'), # linkedin.com/in/sylvain-gugger-74218b144
