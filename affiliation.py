@@ -1,4 +1,4 @@
-PROJECT = 'tensorflow'
+PROJECT = ''
 
 import pickle
 from swin.GitHub import mapper
@@ -6,7 +6,6 @@ from swin.GitHub import mapper
 '''
 gs-olive
 lxning
-mrwyattii
 q10
 sryap
 udaij12
@@ -40,12 +39,14 @@ LOGIN_TO_AFFILIATION = [
     ('janeyx99',         'meta'),        # linkedin.com/in/jane-yuan-xu
     ('jansel',           'meta'),        # linkedin.com/in/jansel
     ('jcaip',            'meta'),        # linkedin.com/in/jcaip
+    ('jeffra',           'microsoft'),   # linkedin.com/in/jeffrasley
     ('jongwook',         'openai'),      # github.com/jongwook
     ('kshitij12345',     'quansight'),   # linkedin.com/in/kshiteejkalambarkar
     ('kumpera',          'meta'),        # linkedin.com/in/rodrigokumpera
     ('loadams',          'microsoft'),   # linkedin.com/in/logansadams
     ('lekurile',         'microsoft'),   # linkedin.com/in/lev-kurilenko-99a217117
     ('malfet',           'meta'),        # linkedin.com/in/nikita-shulga-2875828
+    ('mrwyattii',        'microsoft'),   # web search (http://arxiv.org/pdf/2308.01320.pdf)
     ('msaroufim',        'meta'),        # linkedin.com/in/marksaroufim
     ('namannandan',      'amazon'),      # linkedin.com/in/namannandan
     ('ngimel',           'meta'),        # linkedin.com/in/natalia-gimelshein-8347a480
@@ -56,6 +57,7 @@ LOGIN_TO_AFFILIATION = [
     ('sekyondaMeta',     'meta'),
     ('sgugger',          'huggingface'), # linkedin.com/in/sylvain-gugger-74218b144
     ('soulitzer',        'meta'),        # linkedin.com/in/jeffrey-wan
+    ('stas00',           'huggingface'), # linkedin.com/in/stasbekman
     ('susnato',          'uem'),         # linkedin.com/in/susnato-dhar-922239211
     ('wanchaol',         'meta'),        # linkedin.com/in/wanchaol
     ('wconstab',         'meta'),        # linkedin.com/in/will-constable-969a53b
@@ -167,7 +169,7 @@ def guess_affiliation_from_email(user):
 Map of known translations from company info into affiliation.
 '''
 COMPANY_TO_AFFILIATION = [
-    ('advanced micro devices inc.',                 'amd'),
+    ('advanced micro devices',                      'amd'),
     ('university of cambridge',                     'cam'),
     ('stasosphere online inc. / contextual.ai',     'contextual'),
     ('institute for health metrics and evaluation', 'healthdata'),

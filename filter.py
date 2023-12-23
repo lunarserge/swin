@@ -8,7 +8,8 @@ Known bot accounts.
 BOTS = [
     'dependabot[bot]',
     'pytorchmergebot',
-    'pytorchupdatebot'
+    'pytorchupdatebot',
+    'tensorflow-jenkins'
 ]
 
 with open(PROJECT+'.pickle', 'rb') as f:
